@@ -1,0 +1,92 @@
+.Card {
+  /* define some variables */
+  --card-padding-x: 16px;
+  --card-padding-y: 16px;
+  /* base styles */
+  background: var(--color-surface);
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  /* base styles for the headline */
+  a {
+    color: var(--color-text);
+    display: block;
+    hyphens: auto;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+    h3 {
+      hyphens: inherit;
+    }
+  }
+  /* base styles for the time */
+  time {
+    color: var(--color-text-muted);
+    display: block;
+    font-size: var(--font-size-075);
+  }
+  /* vertical styles */
+  &[data-orientation="vertical"] {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    /* image styles */
+    .Card__Image {
+      aspect-ratio: 1.67;
+      display: block;
+      margin: 0px;
+      overflow: hidden;
+      padding: 0px;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    /* content styles */
+    .Card__Content {
+      padding-block: 0px var(--card-padding-y);
+      padding-inline: var(--card-padding-x);
+      a {
+        margin-block: 16px 12px;
+      }
+      h3 {
+        font-size: var(--font-size-400);
+        font-weight: var(--font-weight-bold);
+      }
+    }
+  }
+  /* horizontal styles */
+  &[data-orientation="horizontal"] {
+    align-items: flex-start;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    padding-block: var(--card-padding-y);
+    padding-inline: var(--card-padding-x);
+    /* image styles */
+    .Card__Image {
+      aspect-ratio: 1;
+      border-radius: 5px;
+      display: block;
+      flex: 0 0 auto;
+      margin: 0px;
+      overflow: hidden;
+      padding: 0px;
+      width: 80px;
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    /* content styles */
+    .Card__Content {
+      a {
+        margin-block-end: 12px;
+      }
+      h3 {
+        font-size: var(--font-size-200);
+        font-weight: var(--font-weight-medium);
+      }
+    }
+  }
+}

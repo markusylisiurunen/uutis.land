@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>uutis.land</title>
+<meta name="description" content="uutis.land is the land of uutises.">
+
+<link rel="preconnect" href="https://rsms.me/">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+<link rel="stylesheet" href="/assets/css/index.css?v={{ global.assetVersion }}">
+
+{% if global.runMode != 'build' %}
+  {% include 'scripts/fetch-content-if-dev.liquid' %}
+{% endif %}

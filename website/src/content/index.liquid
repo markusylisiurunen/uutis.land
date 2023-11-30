@@ -1,0 +1,16 @@
+---
+permalink: /index.html
+---
+<!doctype html>
+<html lang="fi">
+  <head>
+    {% include 'partials/head.liquid' %}
+  </head>
+  <body class="Page__Index">
+    {% include 'partials/navigation.liquid' %}
+    <main>
+      <div id="content"></div>
+    </main>
+    <script src="/assets/js/index.js?v={{ global.assetVersion }}" defer></script>
+  </body>
+</html>

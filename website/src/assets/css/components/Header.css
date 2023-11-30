@@ -1,0 +1,16 @@
+.Header {
+  --header-height: 40px;
+}
+
+.Header {
+  align-items: center;
+  background: var(--color-bg);
+  display: flex;
+  height: var(--header-height);
+  justify-content: center;
+  margin-block-end: 8px;
+}
+
+.Header > span {
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,26 @@
+<script>
+  if (window.location.pathname === '/') {
+    window.addEventListener('load', () => {
+      Promise.resolve().then(async () => {
+        const resp = await fetch(`http://localhost:8787?dev`);
+        document.getElementById('content').innerHTML = await resp.text();
+      });
+    });
+  }
+  if (window.location.pathname === '/tag') {
+    window.addEventListener('load', () => {
+      Promise.resolve().then(async () => {
+        const resp = await fetch(`http://localhost:8787/tag${window.location.search}&dev`);
+        document.getElementById('content').innerHTML = await resp.text();
+      });
+    });
+  }
+  if (window.location.pathname === '/article') {
+    window.addEventListener('load', () => {
+      Promise.resolve().then(async () => {
+        const resp = await fetch(`http://localhost:8787/a/1?dev`);
+        document.getElementById('content').innerHTML = await resp.text();
+      });
+    });
+  }
+</script>

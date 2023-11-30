@@ -1,0 +1,22 @@
+name = "uutis-land"
+main = "src/index.ts"
+
+account_id = "04ee3549e6a7766ceab2f7125cc5ac92"
+
+compatibility_date = "2023-11-21"
+compatibility_flags = ["nodejs_compat"]
+
+workers_dev = false
+
+vars = { ENV = "prod" }
+
+routes = [
+	{ pattern = "uutis.land", zone_name = "uutis.land" },
+	{ pattern = "uutis.land/tag", zone_name = "uutis.land" },
+	{ pattern = "uutis.land/a/*", zone_name = "uutis.land" },
+]
+
+r2_buckets = [{ binding = "BUCKET", bucket_name = "uutis-land" }]
+
+[env.dev]
+vars = { ENV = "dev" }

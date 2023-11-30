@@ -1,0 +1,45 @@
+.Page__Search {
+  --search-max-width: 620px;
+  --search-padding-x: 16px;
+  background: var(--color-surface);
+  main {
+    margin: 0px auto;
+    max-width: calc(var(--search-max-width) + 2 * var(--search-padding-x));
+    padding-block: 16px 33svh;
+    padding-inline: var(--search-padding-x);
+    > form {
+      display: flex;
+      gap: 8px;
+      input {
+        appearance: none;
+        background: transparent;
+        border-radius: 0px;
+        border: 1px solid var(--color-border);
+        color: var(--color-text);
+        height: 40px;
+        outline: none;
+        padding: 0px 16px;
+        width: 100%;
+        &::placeholder {
+          color: var(--color-text-muted);
+        }
+      }
+      button {
+        align-items: center;
+        appearance: none;
+        background: var(--color-text);
+        border-radius: 0px;
+        border: none;
+        color: var(--color-bg);
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        outline: none;
+        padding: 0px 12px;
+        svg {
+          display: block;
+        }
+      }
+    }
+  }
+}

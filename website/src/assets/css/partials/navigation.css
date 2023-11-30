@@ -1,0 +1,32 @@
+.Navigation {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border-muted);
+  padding-block: 8px;
+  .Navigation__Row {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    padding-inline: 16px;
+  }
+  .Navigation__Actions {
+    align-items: center;
+    display: flex;
+    gap: 16px;
+    a {
+      padding: 8px;
+    }
+  }
+  a {
+    color: inherit;
+    display: block;
+    text-decoration: none;
+  }
+  h3 {
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-regular);
+  }
+  svg {
+    display: block;
+  }
+}

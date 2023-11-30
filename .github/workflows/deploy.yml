@@ -1,0 +1,88 @@
+name: Deploy
+
+concurrency: ${{ github.ref_name }}
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy-content:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/iron
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./content
+      - name: Build
+        run: npm run build
+        working-directory: ./content
+      - name: Process articles
+        run: npm run process-articles
+        working-directory: ./content
+      - name: Deploy to Cloudflare R2
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --delete
+        env:
+          AWS_S3_BUCKET: uutis-land
+          AWS_S3_ENDPOINT: ${{ secrets.CLOUDFLARE_R2_ENDPOINT }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: ./content/dist/articles
+          DEST_DIR: _articles
+  deploy-website:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/iron
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./website
+      - name: Build
+        run: npm run build
+        working-directory: ./website
+      - name: Deploy to Cloudflare R2
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --exclude '_*' --delete
+        env:
+          AWS_S3_BUCKET: uutis-land
+          AWS_S3_ENDPOINT: ${{ secrets.CLOUDFLARE_R2_ENDPOINT }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+          SOURCE_DIR: ./website/dist
+  deploy-edge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs:
+      - deploy-content
+      - deploy-website
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: lts/iron
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./edge
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: ./edge

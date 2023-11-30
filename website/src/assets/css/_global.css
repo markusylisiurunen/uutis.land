@@ -1,0 +1,57 @@
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings:
+    "calt" 1,
+    "cv06" 1,
+    "cv10" 1,
+    "liga" 1,
+    "ss01" 1,
+    "ss03" 1;
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+html,
+body {
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+body {
+  color: var(--color-text);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  overflow-wrap: break-word;
+  text-size-adjust: none;
+
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+  margin: 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+strong,
+b {
+  font-weight: var(--font-weight-bold);
+}
+
+a {
+  color: var(--color-link);
+}
