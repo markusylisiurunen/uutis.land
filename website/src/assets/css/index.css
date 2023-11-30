@@ -5,6 +5,7 @@
 @import "./_global.css" layer(base);
 
 @import "./pages/index.css" layer(pages);
+@import "./pages/tag.css" layer(pages);
 @import "./pages/article.css" layer(pages);
 @import "./pages/search.css" layer(pages);
 

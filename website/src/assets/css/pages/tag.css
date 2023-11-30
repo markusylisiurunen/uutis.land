@@ -1,0 +1,18 @@
+.Page__Tag {
+  background: var(--color-bg-muted);
+  main {
+    margin: 0px auto;
+    max-width: 560px;
+    padding-block: 8px 33svh;
+  }
+  #content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  /* inject card component config */
+  --card-border-radius: 5px;
+  @media (width <= 560px) {
+    --card-border-radius: 0px;
+  }
+}

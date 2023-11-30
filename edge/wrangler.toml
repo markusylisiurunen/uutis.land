@@ -12,7 +12,7 @@ vars = { ENV = "prod" }
 
 routes = [
 	{ pattern = "uutis.land", zone_name = "uutis.land" },
-	{ pattern = "uutis.land/tag", zone_name = "uutis.land" },
+	{ pattern = "uutis.land/tag*", zone_name = "uutis.land" },
 	{ pattern = "uutis.land/a/*", zone_name = "uutis.land" },
 ]
 
