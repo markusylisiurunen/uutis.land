@@ -4,10 +4,14 @@
   --color-bg: lch(100% 0 0);
   --color-bg-muted: lch(96% 0 0);
   --color-surface: lch(100% 0 0);
+  --color-surface-heavy: lch(8% 0 0);
   --color-border: lch(6% 0 0 / 0.32);
   --color-border-muted: lch(6% 0 0 / 0.16);
+  --color-border-heavy: lch(92% 0 0 / 0.32);
+  --color-border-heavy-muted: lch(92% 0 0 / 0.16);
   --color-text: lch(6% 0 0);
   --color-text-muted: lch(12% 0 0 / 0.8);
+  --color-text-heavy: lch(92% 0 0);
   --color-link: lch(28% 88 276);
 
   /* font sizes */
@@ -37,10 +41,14 @@
     --color-bg: lch(2% 0 0);
     --color-bg-muted: lch(5% 0 0);
     --color-surface: lch(8% 0 0);
+    --color-surface-heavy: lch(10% 0 0);
     --color-border: lch(92% 0 0 / 0.32);
     --color-border-muted: lch(92% 0 0 / 0.16);
+    --color-border-heavy: lch(92% 0 0 / 0.32);
+    --color-border-heavy-muted: lch(92% 0 0 / 0.16);
     --color-text: lch(92% 0 0);
     --color-text-muted: lch(72% 0 0 / 0.8);
+    --color-text-heavy: lch(92% 0 0);
     --color-link: lch(72% 88 276);
   }
 }

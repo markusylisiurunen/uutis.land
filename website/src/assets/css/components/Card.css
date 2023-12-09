@@ -1,29 +1,42 @@
 .Card {
   /* define some variables */
+  --card-color-bg: var(--color-surface);
+  --card-color-text: var(--color-text);
+  --card-color-border: var(--color-border-muted);
   --card-padding-x: 16px;
   --card-padding-y: 16px;
+  &[data-style="heavy"] {
+    --card-color-bg: var(--color-surface-heavy);
+    --card-color-text: var(--color-text-heavy);
+    --card-color-border: var(--color-border-heavy-muted);
+  }
   /* base styles */
-  background: var(--color-surface);
+  background: var(--card-color-bg);
   border-radius: var(--card-border-radius);
   overflow: hidden;
+  /* base styles for the topic */
+  .Card__Topic {
+    color: var(--card-color-text);
+    display: block;
+    font-weight: var(--font-weight-medium);
+    line-height: var(--line-height-heading);
+  }
   /* base styles for the headline */
   a {
-    color: var(--color-text);
+    color: var(--card-color-text);
     display: block;
     hyphens: auto;
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
     h3 {
       hyphens: inherit;
     }
   }
   /* base styles for the time */
   time {
-    color: var(--color-text-muted);
+    color: var(--card-color-text);
     display: block;
     font-size: var(--font-size-075);
+    opacity: 0.67;
   }
   /* vertical styles */
   &[data-orientation="vertical"] {
@@ -46,12 +59,29 @@
     .Card__Content {
       padding-block: 0px var(--card-padding-y);
       padding-inline: var(--card-padding-x);
+      .Card__Topic {
+        font-size: var(--font-size-100);
+        margin-block: 16px 0px;
+      }
       a {
         margin-block: 16px 12px;
+      }
+      &:has(.Card__Topic) {
+        a {
+          margin-block: 8px 12px;
+        }
       }
       h3 {
         font-size: var(--font-size-400);
         font-weight: var(--font-weight-bold);
+      }
+    }
+    /* small-sized styles */
+    &[data-size="s"] {
+      .Card__Content {
+        h3 {
+          font-size: var(--font-size-300);
+        }
       }
     }
   }
@@ -80,12 +110,55 @@
     }
     /* content styles */
     .Card__Content {
+      .Card__Topic {
+        font-size: var(--font-size-075);
+        margin-block-end: 8px;
+      }
       a {
         margin-block-end: 12px;
       }
       h3 {
         font-size: var(--font-size-200);
         font-weight: var(--font-weight-medium);
+      }
+    }
+    /* small-sized styles */
+    &[data-size="s"] {
+      .Card__Content {
+        h3 {
+          font-size: var(--font-size-100);
+        }
+      }
+    }
+  }
+  /* legend styles */
+  .Card__LegendTitle {
+    padding-block: 12px;
+    padding-inline: var(--card-padding-x);
+    h3 {
+      color: var(--card-color-text);
+      font-size: var(--font-size-200);
+      font-weight: var(--font-weight-bold);
+      line-height: var(--line-height-heading);
+    }
+  }
+  .Card__LegendRelatedItems {
+    border-top: 1px solid var(--card-color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-inline: var(--card-padding-x);
+    padding-block: var(--card-padding-y);
+    /* reset some styles */
+    .Card {
+      border-radius: 0px;
+      padding: 0px;
+      width: 100%;
+    }
+    .Card__Content {
+      padding: 0px;
+      .Card__Topic {
+        margin-block-start: 0px;
       }
     }
   }
